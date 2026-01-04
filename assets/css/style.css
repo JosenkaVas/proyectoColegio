@@ -1,0 +1,143 @@
+/* =========================================
+   ESTILOS BASE (Mismo formato para ambos)
+   ========================================= */
+:root {
+    --azul-fuerte: #003366;
+    --azul-clarito: #eef3f9;
+    --gris-texto: #555;
+    --blanco: #ffffff;
+    --borde: #dce4ec;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #e9ecef;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor Principal (El que mantiene el formato de la imagen) */
+.main-container {
+    display: flex;
+    width: 950px; /* Ancho optimizado para ambos */
+    background: var(--blanco);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    min-height: 550px;
+}
+
+/* Lado Izquierdo: Formulario */
+.form-section {
+    flex: 1;
+padding: 20px 40px; /* Reducido de 40px a 20px arriba/abajo */    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-logo {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 100px;
+}
+
+h2 {
+    color: var(--azul-fuerte);
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 22px;
+}
+
+/* Inputs con estilo de la imagen */
+.input-group {
+    display: flex;
+    align-items: center;
+    background: var(--azul-clarito);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.input-icon {
+    padding: 10px;
+    color: var(--gris-texto);
+    background: #f8f9fa;
+    border-right: 1px solid var(--borde);
+    display: flex;
+    align-items: center;
+}
+
+.input-group input, .select-custom {
+    border: none;
+    background: transparent;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+}
+
+/* Lado Derecho: Imagen Institucional (Exactamente como la imagen) */
+.image-section {
+    flex: 1;
+    position: relative;
+    background-color: var(--azul-fuerte);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0.5; /* Efecto azulado de la imagen */
+}
+
+.overlay-blue {
+grid-column: span 2;
+    border: 0;
+    border-top: 1px solid var(--borde);
+    margin: 5px 0; /* Espacio mínimo para la línea */
+}
+
+.slogan-text {
+    position: relative;
+    z-index: 10;
+    color: var(--blanco);
+    text-align: center;
+    font-size: 24px;
+    font-style: italic;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+/* Estilos para la cuadrícula del Registro */
+.grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+}
+
+.full-width { grid-column: span 2; }
+
+.btn-submit {
+    background: var(--azul-fuerte);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn-submit:hover { background: #002244; }

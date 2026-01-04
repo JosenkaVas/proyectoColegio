@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Institución Educativa</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <style>
+        /* Estilo para los errores dentro del formulario */
+        .login-error-msg {
+            color: #d32f2f;
+            background-color: #fdecea;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid #f5c6cb;
+            animation: fadeIn 0.4s ease-in-out;
+            display: none; /* Oculto por defecto hasta que JS lo active */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <div class="main-container">
+        <div class="form-section">
+            <img src="assets/img/logo_eduardo.png" class="form-logo">
+            <h2>Inicie sesión en su cuenta</h2>
+            
+            <form action="auth/login_process.php" method="POST">
+                
+                <div id="error-container" class="login-error-msg">
+                    <i class="fas fa-exclamation-circle"></i> <span id="error-text"></span>
+                </div>
+
+                <div class="input-group">
+                    <span class="input-icon"><i class="fa-regular fa-user"></i></span>
+                    <input type="text" name="usuario" placeholder="Usuario" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-icon"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" name="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-submit">Iniciar Sesión</button>
+            </form>
+
+            <div style="margin-top:20px; text-align:justify; font-size:14px;">
+                <p>¿Olvidaste tu contraseña? <a href="reset_password.php" style="color:var(--azul-fuerte); font-weight:bold;text-decoration: none;">Restablecer contraseña</a></p>
+            </div>
+            <div style="margin-top:20px; text-align:justify; font-size:14px;">
+                <p>¿No tienes una cuenta? <a href="crear_cuenta.php" style="color:var(--azul-fuerte); font-weight:bold;text-decoration: none;">Registrarse</a></p>
+            </div>
+        </div>
+
+        <div class="image-section">
+            <div class="overlay-blue"></div>
+            <img src="assets/img/institucion.jpg" class="bg-image">
+            <h1 class="slogan-text">"Forjando el carácter, inspirando la excelencia académica hacia el futuro."</h1>
+        </div>
+    </div>
+
+    <script>
+        // Lógica para reemplazar la funcionalidad de PHP por JavaScript
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+
+            if (error) {
+                const container = document.getElementById('error-container');
+                const textSpan = document.getElementById('error-text');
+                
+                let mensaje = "";
+                
+                switch(error) {
+                    case 'vacio': mensaje = "Debe llenar ambos campos."; break;
+                    case 'usuario': mensaje = "El nombre de usuario no existe."; break;
+                    case 'password': mensaje = "Contraseña incorrecta."; break;
+                    case 'db': mensaje = "Error de conexión con el servidor."; break;
+                    default: mensaje = "Ocurrió un error inesperado."; break;
+                }
+
+                textSpan.textContent = mensaje;
+                container.style.display = 'block'; // Mostrar el error
+            }
+        });
+    </script>
+</body>
+</html>

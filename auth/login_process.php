@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     if (empty($usuario) || empty($password)) {
-        header("Location: ../index.php?error=vacio");
+        header("Location: ../index.html?error=vacio");
         exit();
     }
 
@@ -35,16 +35,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
                 
             } else {
-                header("Location: ../index.php?error=password");
+                header("Location: ../index.html?error=password");
                 exit();
             }
         } else {
-            header("Location: ../index.php?error=usuario");
+            header("Location: ../index.html?error=usuario");
             exit();
         }
 
     } catch (PDOException $e) {
-        header("Location: ../index.php?error=db");
+        header("Location: ../index.html?error=db");
         exit();
     }
 }
